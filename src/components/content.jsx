@@ -2,9 +2,10 @@ import { useState } from "react";
 import Output from "./output";
 import Form from "./form";
 
+function Content() {
+  const [filled, setFilled] = useState(false);
 
-function Content(){
-    return <Output />
+  return filled === false ? <Form /> : <Output />;
 }
 
-export  default Content;
+export default Content;
