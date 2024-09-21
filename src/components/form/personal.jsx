@@ -3,7 +3,7 @@ function Personal() {
     <fieldset>
       <legend> Personal Info</legend>
 
-      <label htmlFor="phoneNumber"> Phone Number</label>
+      <label htmlFor="phoneNumber"> Phone Number:</label>
       <input
         type="tel"
         name="phoneNumber"
@@ -13,7 +13,7 @@ function Personal() {
         required
       />
 
-      <label htmlFor="email">Email Address</label>
+      <label htmlFor="email">Email Address:</label>
       <input
         type="email"
         name="email"
@@ -22,10 +22,10 @@ function Personal() {
         required
       />
 
-      <label htmlFor="linkedIn">LinkedIn page URL</label>
+      <label htmlFor="linkedIn">LinkedIn page URL:</label>
       <input type="text" name="linkedIn" id="linkedIn" required />
 
-      <label htmlFor="github">Github page URL</label>
+      <label htmlFor="github">Github page URL:</label>
       <input type="text" name="github" id="github" required />
     </fieldset>
   );
