@@ -58,25 +58,35 @@ function UniversityDegree({ index }) {
 }
 
 function Education() {
-  const [degreeCount, setDegreeCount] = useState(1);
+  const [degrees, setDegrees] = useState([0]);
 
   function addDegree() {
-    setDegreeCount(degreeCount + 1);
+    setDegrees([...degrees,degrees.length]);
   }
 
-  let degreeComponents = [];
-
-  for(let i = 0; i< degreeCount;i++){
-    degreeComponents.push(<UniversityDegree key={i} index={i} />)
+  function removeDegree() {
+    setDegrees(degrees.slice(0,-1));
   }
+
   return (
     <fieldset>
       <legend id="educationForm">Education</legend>
       <School grade={10} />
       <School grade={12} />
-      {degreeComponents}
-      <button type="button" onClick={addDegree}>Add Degree</button>
 
+      {degrees.map((_,index)=>(
+        <UniversityDegree key={index} index={index}/>
+      ))}
+
+      <button type="button" onClick={addDegree}>
+        Add Degree
+      </button>
+
+      {degrees.length > 0 && (
+        <button type="button" onClick={removeDegree}>
+          Remove Degree
+        </button>
+      )}
     </fieldset>
   );
 }
