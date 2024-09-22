@@ -71,7 +71,7 @@ function Education() {
   }
   return (
     <fieldset>
-      <legend>Education</legend>
+      <legend id="educationForm">Education</legend>
       <School grade={10} />
       <School grade={12} />
       {degreeComponents}
