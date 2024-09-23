@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Duration } from "./utils";
 
 function School({ grade }) {
   function nameHelper(name) {
@@ -37,7 +38,10 @@ function UniversityDegree({ index }) {
   let degreeName = nameHelper("degreeName");
   let university = nameHelper("university");
   let location = nameHelper("universityLocation");
-  let percentage = nameHelper("universityPercentage");
+  let duration = {
+    start: nameHelper("universityDuration") + "Start",
+    end: nameHelper("universityDuration") + "end",
+  };
 
   return (
     <fieldset>
@@ -51,8 +55,7 @@ function UniversityDegree({ index }) {
       <label htmlFor={location}>Location:</label>
       <input type="text" name={location} id={location} required />
 
-      <label htmlFor={percentage}>Percentage:</label>
-      <input type="number" name={percentage} id={percentage} required />
+      <Duration duration={duration}/>
     </fieldset>
   );
 }
@@ -61,11 +64,11 @@ function Education() {
   const [degrees, setDegrees] = useState([0]);
 
   function addDegree() {
-    setDegrees([...degrees,degrees.length]);
+    setDegrees([...degrees, degrees.length]);
   }
 
   function removeDegree() {
-    setDegrees(degrees.slice(0,-1));
+    setDegrees(degrees.slice(0, -1));
   }
 
   return (
@@ -74,8 +77,8 @@ function Education() {
       <School grade={10} />
       <School grade={12} />
 
-      {degrees.map((_,index)=>(
-        <UniversityDegree key={index} index={index}/>
+      {degrees.map((_, index) => (
+        <UniversityDegree key={index} index={index} />
       ))}
 
       <button type="button" onClick={addDegree}>
