@@ -16,15 +16,20 @@ function Job({ index }) {
 
   return (
     <fieldset>
-        <legend>Job {index + 1}</legend>
+      <legend>Job {index + 1}</legend>
+
       <label htmlFor={role}>Role :</label>
       <input type="text" name={role} id={role} required />
+
       <label htmlFor={org}>Organization :</label>
       <input type="text" name={org} id={org} required />
+
       <label htmlFor={location}>Location :</label>
       <input type="text" name={location} id={location} required />
+
       <label htmlFor={desc}>Description :</label>
       <textarea name={desc} id={desc} required></textarea>
+      
       <Duration duration={duration} />
     </fieldset>
   );
