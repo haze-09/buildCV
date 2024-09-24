@@ -1,3 +1,46 @@
-legend{
-    font-size: larger;
+fieldset {
+  border: none;
+  margin: 2rem;
+  gap: 1rem;
+  padding: 0;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+
+fieldset > fieldset {
+  margin: 0;
+}
+
+legend {
+  font-size: 1.7rem;
+  font-weight: 700;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+
+
+.duration {
+  display: flex;
+  justify-content: space-between;
+}
+.duration>input{
+    width: 45%;
+}
+
+@media (max-width: 400px) {
+  fieldset {
+    margin: 1rem;
+  }
+
+
+
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
 }

@@ -12,16 +12,16 @@ function Proj({ index }) {
 
   return (
     <fieldset>
-      <legend>Job {index + 1}</legend>
+      <legend>Project {index + 1}</legend>
 
-      <label htmlFor={name}>Name :</label>
-      <input type="text" name={name} id={name} required />
-
-      <label htmlFor={stack}>Stack :</label>
-      <input type="text" name={stack} id={stack} placeholder="eg format: HTML, CSS, JS " required />
-
-      <label htmlFor={desc}>Description :</label>
-      <textarea name={desc} id={desc} required></textarea>
+      <div className="twoCol">
+        <label htmlFor={name}>Name :</label>
+        <input type="text" name={name} id={name} required />
+        <label htmlFor={stack}>Stack :</label>
+        <input type="text" name={stack} id={stack} placeholder="eg format: HTML, CSS, JS " required />
+        <label htmlFor={desc}>Description :</label>
+        <textarea name={desc} id={desc} required></textarea>
+      </div>
     </fieldset>
   );
 }
