@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Output from "./output";
 import Form from "./form";
-import Education from "./form/education";
-import Experience from "./form/experience";
 
 function Content() {
   const [state, setState] = useState("form");

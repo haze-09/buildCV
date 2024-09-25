@@ -29,7 +29,20 @@ function School({ grade }) {
   );
 }
 
-function UniversityDegree({ index }) {
+function UniversityDegree({ setFormData, formData, index }) {
+  function handleChange(e) {
+    let { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      education: {
+        ...prevState.education,
+        university: prevState.education.university.map((degree, i) => {
+          return i === index ? { ...degree, [name]: value } : degree;
+        }),
+      },
+    }));
+  }
+
   function nameHelper(name) {
     return name + index;
   }
@@ -46,13 +59,38 @@ function UniversityDegree({ index }) {
     <fieldset>
       <legend>Degree {index + 1}</legend>
       <div className="twoCol">
+
         <label htmlFor={degreeName}>Degree Name:</label>
-        <input type="text" name={degreeName} id={degreeName} required />
+        <input
+          type="text"
+          name="name"
+          id={degreeName}
+          value={formData.education.university[index].name || ""}
+          onChange={handleChange}
+          required
+        />
+
         <label htmlFor={university}>University:</label>
-        <input type="text" name={university} id={university} required />
+        <input
+          type="text"
+          name="university"
+          id={university}
+          value={formData.education.university[index].university || ""}
+          onChange={handleChange}
+          required
+        />
+
         <label htmlFor={location}>Location:</label>
-        <input type="text" name={location} id={location} required />
-        <Duration duration={duration} />
+        <input
+          type="text"
+          name="location"
+          id={location}
+          value={formData.education.university[index].location || ""}
+          onChange={handleChange}
+          required
+        />
+
+        <Duration duration={duration} handleChange={handleChange} formData={formData} index={index} section={'education'} />
       </div>
     </fieldset>
   );
@@ -89,7 +127,12 @@ function Education({ setFormData, formData }) {
       <School grade={12} />
 
       {formData.education.university.map((_, index) => (
-        <UniversityDegree key={index} index={index} />
+        <UniversityDegree
+          setFormData={setFormData}
+          formData={formData}
+          key={index}
+          index={index}
+        />
       ))}
 
       <div className="buttons">
