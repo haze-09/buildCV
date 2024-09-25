@@ -13,7 +13,9 @@ function Form() {
       <Experience />
       <Projects />
       <Skills />
-      <button type="submit">Build</button>
+      <div className="buttons">
+        <button type="submit">Build</button>
+      </div>
     </form>
   );
 }

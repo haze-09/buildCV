@@ -71,7 +71,7 @@ function Education() {
 
   return (
     <fieldset>
-      <legend id="educationForm">Education</legend>
+      <legend id="educationForm">Education:</legend>
       <School grade={10} />
       <School grade={12} />
 
@@ -79,8 +79,8 @@ function Education() {
         <UniversityDegree key={index} index={index} />
       ))}
 
-      <div>
-        <button type="button" onClick={addDegree}>
+      <div className="buttons">
+        <button type="button"  onClick={addDegree}>
           Add Degree
         </button>
 

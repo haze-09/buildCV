@@ -51,15 +51,16 @@ function Experience() {
       {jobs.map((_, index) => (
         <Job key={index} index={index} />
       ))}
-      <button type="button" onClick={addJob}>
-        Add Job
-      </button>
-
-      {jobs.length > 1 && (
-        <button type="button" onClick={removeJob}>
-          Remove Job
+      <div className="buttons">
+        <button type="button" onClick={addJob}>
+          Add Job
         </button>
-      )}
+        {jobs.length > 1 && (
+          <button type="button" onClick={removeJob}>
+            Remove Job
+          </button>
+        )}
+      </div>
     </fieldset>
   );
 }

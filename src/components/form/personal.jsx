@@ -1,7 +1,7 @@
 function Personal() {
   return (
     <fieldset>
-      <legend> Personal Info</legend>
+      <legend> Personal Info:</legend>
 
       <div className="twoCol">
         <label htmlFor="phoneNumber"> Phone Number:</label>

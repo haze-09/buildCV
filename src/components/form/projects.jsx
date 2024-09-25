@@ -43,15 +43,16 @@ function Projects() {
       {projects.map((_, index) => (
         <Proj key={index} index={index} />
       ))}
-      <button type="button" onClick={addProj}>
-        Add Project
-      </button>
-
-      {projects.length > 1 && (
-        <button type="button" onClick={removeProj}>
-          Remove Project
+      <div className="buttons">
+        <button type="button" onClick={addProj}>
+          Add Project
         </button>
-      )}
+        {projects.length > 1 && (
+          <button type="button" onClick={removeProj}>
+            Remove Project
+          </button>
+        )}
+      </div>
     </fieldset>
   );
 }
