@@ -1,11 +1,36 @@
 import { useState } from "react";
 import Output from "./output";
 import Form from "./form";
+import Education from "./form/education";
+import Experience from "./form/experience";
 
 function Content() {
-  const [filled, setFilled] = useState(false);
+  const [state, setState] = useState("form");
+  const [formData, setFormData] = useState({
+    personalInfo: {},
+    education: {
+      school:{},
+      university:[
+        {degree1:{}},
+      ]
+    },
+    experience: {},
+    projects: {},
+    skills: {},
+  });
 
-  return filled === false ? <Form /> : <Output />;
+  function handleSubmit(e) {
+    e.preventDefault();
+    setState("output");
+  }
+
+  function handleEdit() {}
+
+  return state === "form" ? (
+    <Form setFormData={setFormData} formData={formData} handleSubmit={handleSubmit} />
+  ) : (
+    <Output formData={formData} />
+  );
 }
 
 export default Content;

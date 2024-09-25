@@ -58,15 +58,28 @@ function UniversityDegree({ index }) {
   );
 }
 
-function Education() {
-  const [degrees, setDegrees] = useState([0]);
-
+function Education({ setFormData, formData }) {
   function addDegree() {
-    setDegrees([...degrees, degrees.length]);
+    setFormData((prevState) => ({
+      ...prevState,
+      education: {
+        ...prevState.education,
+        university: [
+          ...prevState.education.university,
+          { [`degree${prevState.education.university.length + 1}`]: {} },
+        ],
+      },
+    }));
   }
 
   function removeDegree() {
-    setDegrees(degrees.slice(0, -1));
+    setFormData((prevState) => ({
+      ...prevState,
+      education: {
+        ...prevState.education,
+        university: prevState.education.university.slice(0, -1),
+      },
+    }));
   }
 
   return (
@@ -75,16 +88,16 @@ function Education() {
       <School grade={10} />
       <School grade={12} />
 
-      {degrees.map((_, index) => (
+      {formData.education.university.map((_, index) => (
         <UniversityDegree key={index} index={index} />
       ))}
 
       <div className="buttons">
-        <button type="button"  onClick={addDegree}>
+        <button type="button" onClick={addDegree}>
           Add Degree
         </button>
 
-        {degrees.length > 0 && (
+        {formData.education.university.length > 0 && (
           <button type="button" onClick={removeDegree}>
             Remove Degree
           </button>

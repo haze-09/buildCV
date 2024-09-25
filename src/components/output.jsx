@@ -1,5 +1,6 @@
 
-function Output(){
+function Output({formData}){
+    console.log(formData);
     return <p>hiii</p>
 }
 
