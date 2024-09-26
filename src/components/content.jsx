@@ -7,10 +7,8 @@ function Content() {
   const [formData, setFormData] = useState({
     personalInfo: {},
     education: {
-      school:{},
-      university:[
-        {degree1:{}},
-      ]
+      school: { class10: {} ,  class12: {} },
+      university: [{ degree1: {} }],
     },
     experience: {},
     projects: {},
@@ -25,7 +23,11 @@ function Content() {
   function handleEdit() {}
 
   return state === "form" ? (
-    <Form setFormData={setFormData} formData={formData} handleSubmit={handleSubmit} />
+    <Form
+      setFormData={setFormData}
+      formData={formData}
+      handleSubmit={handleSubmit}
+    />
   ) : (
     <Output formData={formData} />
   );

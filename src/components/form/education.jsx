@@ -1,7 +1,33 @@
 import { useState } from "react";
 import { Duration } from "./utils";
 
-function School({ grade }) {
+function School({ grade, setFormData, formData }) {
+  function handleChange(e) {
+    let { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      education: {
+        ...prevState.education,
+        school: {
+          class10:
+            grade === 10
+              ? {
+                  ...prevState.education.school.class10,
+                  [name]: value,
+                }
+              : prevState.education.school.class10,
+
+          class12:
+            grade === 12
+              ? {
+                  ...prevState.education.school.class12,
+                  [name]: value,
+                }
+              : prevState.education.school.class12,
+        },
+      },
+    }));
+  }
   function nameHelper(name) {
     return name + grade;
   }
@@ -17,13 +43,57 @@ function School({ grade }) {
 
       <div className="twoCol">
         <label htmlFor={schoolName}>School Name:</label>
-        <input type="text" name={schoolName} id={schoolName} required />
+        <input
+          type="text"
+          name="schoolName"
+          id={schoolName}
+          value={
+            grade === 10
+              ? formData.education.school.class10.schoolName || ""
+              : formData.education.school.class12.schoolName || ""
+          }
+          onChange={handleChange}
+          required
+        />
         <label htmlFor={location}>Location:</label>
-        <input type="text" name={location} id={location} required />
+        <input
+          type="text"
+          name="location"
+          id={location}
+          value={
+            grade === 10
+              ? formData.education.school.class10.location || ""
+              : formData.education.school.class12.location || ""
+          }
+          onChange={handleChange}
+          required
+        />
         <label htmlFor={board}>Board:</label>
-        <input type="text" name={board} id={board} required />
+        <input
+          type="text"
+          name="board"
+          id={board}
+          value={
+            grade === 10
+              ? formData.education.school.class10.board || ""
+              : formData.education.school.class12.board || ""
+          }
+          onChange={handleChange}
+          required
+        />
         <label htmlFor={percentage}>Percentage:</label>
-        <input type="number" name={percentage} id={percentage} required />
+        <input
+          type="number"
+          name="percentage"
+          id={percentage}
+          value={
+            grade === 10
+              ? formData.education.school.class10.percentage || ""
+              : formData.education.school.class12.percentage || ""
+          }
+          onChange={handleChange}
+          required
+        />
       </div>
     </fieldset>
   );
@@ -59,7 +129,6 @@ function UniversityDegree({ setFormData, formData, index }) {
     <fieldset>
       <legend>Degree {index + 1}</legend>
       <div className="twoCol">
-
         <label htmlFor={degreeName}>Degree Name:</label>
         <input
           type="text"
@@ -90,7 +159,13 @@ function UniversityDegree({ setFormData, formData, index }) {
           required
         />
 
-        <Duration duration={duration} handleChange={handleChange} formData={formData} index={index} section={'education'} />
+        <Duration
+          duration={duration}
+          handleChange={handleChange}
+          formData={formData}
+          index={index}
+          section={"education"}
+        />
       </div>
     </fieldset>
   );
@@ -123,8 +198,8 @@ function Education({ setFormData, formData }) {
   return (
     <fieldset>
       <legend id="educationForm">Education:</legend>
-      <School grade={10} />
-      <School grade={12} />
+      <School grade={10} setFormData={setFormData} formData={formData} />
+      <School grade={12} setFormData={setFormData} formData={formData} />
 
       {formData.education.university.map((_, index) => (
         <UniversityDegree
