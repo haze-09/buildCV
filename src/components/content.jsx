@@ -7,10 +7,10 @@ function Content() {
   const [formData, setFormData] = useState({
     personalInfo: {},
     education: {
-      school: { class10: {} ,  class12: {} },
+      school: { class10: {}, class12: {} },
       university: [{ degree1: {} }],
     },
-    experience: {},
+    experience: [{ Job1: {} }],
     projects: {},
     skills: {},
   });

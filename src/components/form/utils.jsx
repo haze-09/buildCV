@@ -11,7 +11,7 @@ function Duration({ duration, handleChange, formData, section, index }) {
           value={
             section === "education"
               ? formData.education.university[index].start || ""
-              : ""
+              : formData.experience[index].start || ""
           }
           onChange={handleChange}
           required
@@ -24,7 +24,7 @@ function Duration({ duration, handleChange, formData, section, index }) {
           value={
             section === "education"
               ? formData.education.university[index].end || ""
-              : ""
+              : formData.experience[index].end || ""
           }
           onChange={handleChange}
           required

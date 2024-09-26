@@ -10,9 +10,9 @@ function Form({setFormData, formData, handleSubmit}) {
     <form onSubmit={handleSubmit}>
       <Personal setFormData={setFormData} formData={formData}/>
       <Education setFormData={setFormData} formData={formData}/>
-      {/* <Experience setFormData={setFormData} />
-      <Projects setFormData={setFormData} />
-      <Skills setFormData={setFormData} /> */}
+      <Experience setFormData={setFormData} formData={formData} />
+      {/* <Projects setFormData={setFormData} /> */}
+      {/* <Skills setFormData={setFormData} /> */}
       <div className="buttons">
         <button type="submit">Build</button>
       </div>
