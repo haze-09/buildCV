@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Duration } from "./utils";
 
 function Job({ setFormData, formData, index }) {

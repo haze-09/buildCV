@@ -1,4 +1,16 @@
-function Skills() {
+function Skills({ setFormData, formData }) {
+
+  function handleChange(e) {
+    let { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      skills: {
+        ...prevState.skills,
+        [name]: value,
+      },
+    }));
+  }
+
   return (
     <fieldset>
       <legend>Skills:</legend>
@@ -10,6 +22,8 @@ function Skills() {
           name="languages"
           id="languages"
           placeholder="eg format: HTML, CSS, JS "
+          value={formData.skills.languages || ""}
+          onChange={handleChange}
           required
         />
         <label htmlFor="frameworks">Frameworks:</label>
@@ -18,6 +32,8 @@ function Skills() {
           name="frameworks"
           id="frameworks"
           placeholder="eg format: React, Node"
+          value={formData.skills.frameworks || ""}
+          onChange={handleChange}
         />
         <label htmlFor="devTools">DevTools:</label>
         <input
@@ -25,6 +41,8 @@ function Skills() {
           name="devTools"
           id="devTools"
           placeholder="eg format: Git, VS Code "
+          value={formData.skills.devTools || ""}
+          onChange={handleChange}
         />
         <label htmlFor="libraries">Libraries:</label>
         <input
@@ -32,6 +50,8 @@ function Skills() {
           name="libraries"
           id="libraries"
           placeholder="eg format: Pandas, Numpy "
+          value={formData.skills.libraries || ""}
+          onChange={handleChange}
         />
       </div>
     </fieldset>
