@@ -1,11 +1,9 @@
-
-
 function Proj({ setFormData, formData, index }) {
   function handleChange(e) {
     let { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      experience: prevState.projects.map((project, i) => {
+      projects: prevState.projects.map((project, i) => {
         return i === index ? { ...project, [name]: value } : project;
       }),
     }));

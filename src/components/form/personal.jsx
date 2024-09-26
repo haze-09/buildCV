@@ -15,6 +15,15 @@ function Personal({ setFormData, formData }) {
       <legend> Personal Info:</legend>
 
       <div className="twoCol">
+        <label htmlFor="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          autoComplete="name"
+          value={formData.personalInfo.name || ""}
+          onChange={handleChange}
+        />
         <label htmlFor="phoneNumber"> Phone Number:</label>
         <input
           type="tel"
