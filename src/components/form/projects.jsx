@@ -1,7 +1,17 @@
 import { useState } from "react";
 import { Duration } from "./utils";
 
-function Proj({ index }) {
+function Proj({ setFormData, formData, index }) {
+  function handleChange(e) {
+    let { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      experience: prevState.projects.map((project, i) => {
+        return i === index ? { ...project, [name]: value } : project;
+      }),
+    }));
+  }
+
   function nameHelper(name) {
     return name + index;
   }
@@ -16,38 +26,71 @@ function Proj({ index }) {
 
       <div className="twoCol">
         <label htmlFor={name}>Name :</label>
-        <input type="text" name={name} id={name} required />
+        <input
+          type="text"
+          name="name"
+          id={name}
+          value={formData.projects[index].name || ""}
+          onChange={handleChange}
+          required
+        />
         <label htmlFor={stack}>Stack :</label>
-        <input type="text" name={stack} id={stack} placeholder="eg format: HTML, CSS, JS " required />
+        <input
+          type="text"
+          name="stack"
+          id={stack}
+          placeholder="eg format: HTML, CSS, JS "
+          value={formData.projects[index].stack || ""}
+          onChange={handleChange}
+          required
+        />
         <label htmlFor={desc}>Description :</label>
-        <textarea name={desc} id={desc} required></textarea>
+        <textarea
+          name="desc"
+          id={desc}
+          value={formData.projects[index].desc || ""}
+          onChange={handleChange}
+          required
+        ></textarea>
       </div>
     </fieldset>
   );
 }
 
-function Projects() {
-  const [projects, setProjects] = useState([0]);
-
+function Projects({ setFormData, formData }) {
   function addProj() {
-    setProjects([...projects, projects.length]);
+    setFormData((prevState) => ({
+      ...prevState,
+      projects: [
+        ...prevState.projects,
+        { [`project${prevState.projects.length + 1}`]: {} },
+      ],
+    }));
   }
 
   function removeProj() {
-    setProjects(projects.slice(0, -1));
+    setFormData((prevState) => ({
+      ...prevState,
+      projects: prevState.projects.slice(0, -1),
+    }));
   }
 
   return (
     <fieldset>
       <legend>Projects:</legend>
-      {projects.map((_, index) => (
-        <Proj key={index} index={index} />
+      {formData.projects.map((_, index) => (
+        <Proj
+          setFormData={setFormData}
+          formData={formData}
+          key={index}
+          index={index}
+        />
       ))}
       <div className="buttons">
         <button type="button" onClick={addProj}>
           Add Project
         </button>
-        {projects.length > 1 && (
+        {formData.projects.length > 1 && (
           <button type="button" onClick={removeProj}>
             Remove Project
           </button>

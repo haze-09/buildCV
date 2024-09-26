@@ -11,7 +11,7 @@ function Content() {
       university: [{ degree1: {} }],
     },
     experience: [{ Job1: {} }],
-    projects: {},
+    projects: [{ project1: {} }],
     skills: {},
   });
 

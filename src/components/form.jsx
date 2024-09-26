@@ -5,13 +5,13 @@ import Projects from "./form/projects";
 import Skills from "./form/skills";
 import "../styles/form.css";
 
-function Form({setFormData, formData, handleSubmit}) {
+function Form({ setFormData, formData, handleSubmit }) {
   return (
     <form onSubmit={handleSubmit}>
-      <Personal setFormData={setFormData} formData={formData}/>
-      <Education setFormData={setFormData} formData={formData}/>
+      <Personal setFormData={setFormData} formData={formData} />
+      <Education setFormData={setFormData} formData={formData} />
       <Experience setFormData={setFormData} formData={formData} />
-      {/* <Projects setFormData={setFormData} /> */}
+      <Projects setFormData={setFormData} formData={formData} />
       {/* <Skills setFormData={setFormData} /> */}
       <div className="buttons">
         <button type="submit">Build</button>
