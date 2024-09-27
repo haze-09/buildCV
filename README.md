@@ -1,2 +1,2 @@
 # buildCV
-A project where you enter your details and it makes a cv. Built with React and Vite.
+A project where you enter your details and it generates your resume in pdf format. Built with React, React-pdf, Framer Motion and Vite.
