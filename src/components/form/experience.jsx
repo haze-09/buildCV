@@ -1,4 +1,5 @@
 import { Duration } from "./utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Job({ setFormData, formData, index }) {
   function handleChange(e) {
@@ -96,14 +97,26 @@ function Experience({ setFormData, formData }) {
   return (
     <fieldset>
       <legend>Experience</legend>
-      {formData.experience.map((_, index) => (
-        <Job
-          setFormData={setFormData}
-          formData={formData}
-          key={index}
-          index={index}
-        />
-      ))}
+      <AnimatePresence>
+        {formData.experience.map((_, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 50 }}
+            transition={{ ease: "easeInOut", delay: 0.2 }}
+            layout
+          >
+            <Job
+              setFormData={setFormData}
+              formData={formData}
+              key={index}
+              index={index}
+            />
+          </motion.div>
+        ))}
+      </AnimatePresence>
+
       <div className="buttons">
         <button type="button" onClick={addJob}>
           Add Job

@@ -1,4 +1,5 @@
 import { Duration } from "./utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 function School({ grade, setFormData, formData }) {
   function handleChange(e) {
@@ -84,6 +85,7 @@ function School({ grade, setFormData, formData }) {
         <input
           type="number"
           name="percentage"
+          step={0.01}
           id={percentage}
           value={
             grade === 10
@@ -200,14 +202,25 @@ function Education({ setFormData, formData }) {
       <School grade={10} setFormData={setFormData} formData={formData} />
       <School grade={12} setFormData={setFormData} formData={formData} />
 
-      {formData.education.university.map((_, index) => (
-        <UniversityDegree
-          setFormData={setFormData}
-          formData={formData}
-          key={index}
-          index={index}
-        />
-      ))}
+      <AnimatePresence>
+        {formData.education.university.map((_, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 50 }}
+            transition={{ ease: "easeInOut", delay: 0.2 }}
+            layout
+          >
+            <UniversityDegree
+              setFormData={setFormData}
+              formData={formData}
+              key={index}
+              index={index}
+            />
+          </motion.div>
+        ))}
+      </AnimatePresence>
 
       <div className="buttons">
         <button type="button" onClick={addDegree}>

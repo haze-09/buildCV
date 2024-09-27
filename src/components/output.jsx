@@ -10,7 +10,7 @@ function Output({ formData, handleEdit }) {
   return (
     <>
       <PDFViewer style={{ width: "100%", height: "70vh" }}>
-        <Document>
+        <Document title={personalInfo.name+"'s Resume"}>
           <Page size="A4" style={styles.page}>
             <View style={styles.header}>
               <Text style={styles.bold}>{personalInfo.name}</Text>
@@ -70,7 +70,7 @@ function Output({ formData, handleEdit }) {
         </Document>
       </PDFViewer>
       <div className="buttons">
-        <button onClick={handleEdit}> edit</button>
+        <button style={{marginTop:"1rem"}} onClick={handleEdit}> edit</button>
       </div>
     </>
   );

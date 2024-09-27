@@ -1,3 +1,5 @@
+import { motion, AnimatePresence } from "framer-motion";
+
 function Proj({ setFormData, formData, index }) {
   function handleChange(e) {
     let { name, value } = e.target;
@@ -75,14 +77,25 @@ function Projects({ setFormData, formData }) {
   return (
     <fieldset>
       <legend>Projects:</legend>
-      {formData.projects.map((_, index) => (
-        <Proj
-          setFormData={setFormData}
-          formData={formData}
-          key={index}
-          index={index}
-        />
-      ))}
+      <AnimatePresence>
+        {formData.projects.map((_, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 50 }}
+            transition={{ ease: "easeInOut", delay: 0.2 }}
+            layout
+          >
+            <Proj
+              setFormData={setFormData}
+              formData={formData}
+              key={index}
+              index={index}
+            />
+          </motion.div>
+        ))}
+      </AnimatePresence>
       <div className="buttons">
         <button type="button" onClick={addProj}>
           Add Project
