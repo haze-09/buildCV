@@ -26,9 +26,27 @@ const styles = StyleSheet.create({
     padding: "10 5 0 15"
 
   },
+  item:{
+    marginBottom: 10
+  },
   row: {
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    marginBottom: 5,
+    fontSize: 12
+  },
+  desc:{
+    marginTop: 5,
+    marginHorizontal: 15
+  },
+  skills:{
+    fontSize: 12,
+    flexDirection: "column",
+    gap: 2,
+  },
+  skillRow:{
+    flexDirection:"row",
+    
   },
   bold: {
     fontFamily: "Times-Bold",
