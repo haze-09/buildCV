@@ -121,7 +121,7 @@ function Experience({ setFormData, formData }) {
         <button type="button" onClick={addJob}>
           Add Job
         </button>
-        {formData.experience.length > 1 && (
+        {formData.experience.length > 0 && (
           <button type="button" onClick={removeJob}>
             Remove Job
           </button>

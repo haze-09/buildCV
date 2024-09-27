@@ -13,10 +13,10 @@ function Content() {
           personalInfo: {},
           education: {
             school: { class10: {}, class12: {} },
-            university: [{ degree1: {} }],
+            university: [{}],
           },
-          experience: [{ Job1: {} }],
-          projects: [{ project1: {} }],
+          experience: [{}],
+          projects: [{}],
           skills: {},
         };
   });
